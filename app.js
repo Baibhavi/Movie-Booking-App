@@ -29,7 +29,7 @@ app.use("/booking", bookingRouter);
 //Body: email+password
 
 const pass = process.env.MONGODB_PASSWORD ;
-mongoose.connect('mongodb+srv://Baibhavi-Pandey:'+pass+'@movie-booking.jkcbiek.mongodb.net/bookings?retryWrites=true&w=majority',{ useUnifiedTopology: true, useNewUrlParser: true,}
+mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true, useNewUrlParser: true,}
 )
 .then(() => 
         console.log("connected successfully")
