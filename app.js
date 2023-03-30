@@ -32,7 +32,8 @@ app.use("/booking", bookingRouter);
 
 //http://localhost3000/admin/signup
 //Body: email+password
-mongoose.connect(process.env.MONGO_RI,{ useUnifiedTopology: true, useNewUrlParser: true,}
+
+mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true, useNewUrlParser: true,}
 )
 .then(() => 
         console.log("connected successfully")
