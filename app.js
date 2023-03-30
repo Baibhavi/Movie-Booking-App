@@ -2,6 +2,8 @@ const express = require ("express");
 const mongoose  = require ("mongoose");
 const app = express();
 const dotenv  = require ('dotenv');
+
+
 const userRouter  = require ("./routes/userRoutes.js");
 const adminRouter  = require  ("./routes/adminRoutes.js");
 const movieRouter  = require  ("./routes/movieRoutes.js");
@@ -10,6 +12,9 @@ const cors = require('cors');
 app.use(cors());
 dotenv.config();
 const PORT= process.env.PORT;
+
+const Connection = require('./utils/dbConnect');
+Connection();
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -27,9 +32,7 @@ app.use("/booking", bookingRouter);
 
 //http://localhost3000/admin/signup
 //Body: email+password
-
-const pass = process.env.MONGODB_PASSWORD ;
-mongoose.connect(process.env.MONGO_URI,{ useUnifiedTopology: true, useNewUrlParser: true,}
+mongoose.connect(process.env.MONGO_RI,{ useUnifiedTopology: true, useNewUrlParser: true,}
 )
 .then(() => 
         console.log("connected successfully")
